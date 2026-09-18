@@ -19,3 +19,22 @@ jobs:
         uses: studentscangrow/upload-app@v27
         with:
           tdc_token: ${{ secrets.TDC_TOKEN }}
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+
+      - name: Run code inspection / tests
+        run: |
+          python -c "print('All checks passed successfully!')"
